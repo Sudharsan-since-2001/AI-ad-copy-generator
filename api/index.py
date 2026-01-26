@@ -308,16 +308,17 @@ HTML_CONTENT = """
             background-attachment: fixed;
         }
         
-        .app-wrapper { display: flex; min-height: 100vh; padding: 1.2rem; gap: 1.2rem; }
+        .app-wrapper { display: flex; min-height: 100vh; border-radius: 0; }
         
         .sidebar {
-            width: 380px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 28px; padding: 2.5rem 2rem;
-            display: flex; flex-direction: column; overflow-y: auto;
-            position: relative; box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+            width: 400px; height: 100vh; position: sticky; top: 0;
+            background: var(--bg-card); border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 4rem 2.5rem; display: flex; flex-direction: column; 
+            overflow-y: auto; box-shadow: 20px 0 50px rgba(0,0,0,0.3);
+            z-index: 10;
         }
         .sidebar::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
             background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
         }
 
@@ -377,9 +378,8 @@ HTML_CONTENT = """
         .btn-dream:active { transform: translateY(-1px); }
         .btn-dream:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
-        .canvas { flex: 1; overflow-y: auto; padding: 0.5rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; }
-        .canvas::-webkit-scrollbar { width: 5px; }
-        .canvas::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; }
+        .canvas { flex: 1; overflow-y: auto; padding: 3rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+        .canvas::-webkit-scrollbar { width: 0px; }
 
         .main-header-card { 
             grid-column: span 12; display: flex; align-items: center; gap: 1.5rem; 
@@ -442,8 +442,8 @@ HTML_CONTENT = """
 
         @media (max-width: 1250px) {
             .app-wrapper { flex-direction: column; min-height: auto; padding: 0.8rem; }
-            .sidebar { width: 100% !important; border-radius: 20px; padding: 1.5rem 1.2rem; }
-            .canvas { display: none; grid-template-columns: 1fr; padding: 0.5rem 0; gap: 1rem; align-items: start; }
+            .sidebar { width: 100% !important; height: auto; position: relative; border-radius: 0 0 30px 30px; padding: 2rem 1.5rem; }
+            .canvas { display: grid; grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
             .blob-persona, .blob-audit, .blob-full { grid-column: span 1; }
             .persona-grid { grid-template-columns: 1fr; text-align: left; gap: 1rem; align-items: start; }
             .ad-grid { grid-template-columns: 1fr; align-items: start; }
@@ -652,14 +652,20 @@ HTML_CONTENT = """
                 </div>
 
                 <div class="cyber-card blob-full">
-                    <span class="card-header-lbl">Generation AI</span>
-                    <h3 class="card-title-lg">Ad Copy Variations</h3>
+                    <span class="card-header-lbl">Execution Matrix</span>
+                    <h3 class="card-title-lg">A/B Testing Variations</h3>
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: -1.5rem; margin-bottom: 2rem; border-left: 2px solid var(--accent-purple); padding-left: 1rem;">
+                        Three distinct psychological triggers have been synthesized. Deploy these as Variant A, B, and C to identify the highest conversion hook.
+                    </p>
                     
                     <div class="ad-grid">
-                        ${data.variations.map(v => `
+                        ${data.variations.map((v, i) => `
                             <div class="ad-variation">
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
-                                    <span class="card-header-lbl" style="color: var(--accent-purple); margin-bottom: 0;">${v.angle} ANGLE</span>
+                                    <div style="display: flex; flex-direction: column; gap: 0.2rem;">
+                                        <span class="card-header-lbl" style="color: var(--accent-purple); margin-bottom: 0;">VARIANT ${['A', 'B', 'C'][i]}</span>
+                                        <span class="card-header-lbl" style="font-size: 0.5rem; opacity: 0.6;">${v.angle} APPEAL</span>
+                                    </div>
                                     <div style="display: flex; gap: 0.8rem; align-items: center;">
                                         <button class="copy-raw-btn" 
                                             style="background: none; border: none; cursor: pointer; color: var(--text-dim); font-size: 1.1rem; padding: 4px;" 
@@ -762,6 +768,13 @@ HTML_CONTENT = """
                     canvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
             }
+        }
+                <div class="main-header-card" style="margin-top: 2rem; justify-content: center; background: none; border: none; border-top: 1px solid rgba(255,255,255,0.05); border-radius: 0; padding-top: 2rem;">
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">
+                        Developed by <a href="https://portfolio-sudharsan-karthikeyan.vercel.app/" target="_blank" style="color: var(--accent-purple); text-decoration: none; font-weight: 800;">Sudharsan</a>
+                    </p>
+                </div>
+            `;
         }
     </script>
 </body>
