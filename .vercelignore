@@ -1,0 +1,9 @@
+node_modules
+__pycache__
+frontend/
+backend/
+.env
+.venv
+venv
+*.pyc
+.gemini/
