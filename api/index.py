@@ -726,6 +726,10 @@ HTML_CONTENT = """
                             <div style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; font-family: 'Inter', sans-serif; white-space: pre-wrap;">${data.channel_opt.sms}</div>
                          </div>
                     </div>
+                <div class="main-header-card" style="margin-top: 2rem; justify-content: center; background: none; border: none; border-top: 1px solid rgba(255,255,255,0.05); border-radius: 0; padding-top: 2rem;">
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">
+                        Developed by <a href="https://portfolio-sudharsan-karthikeyan.vercel.app/" target="_blank" style="color: var(--accent-purple); text-decoration: none; font-weight: 800;">Sudharsan</a>
+                    </p>
                 </div>
             `;
         }
@@ -769,12 +773,6 @@ HTML_CONTENT = """
                 }, 100);
             }
         }
-                <div class="main-header-card" style="margin-top: 2rem; justify-content: center; background: none; border: none; border-top: 1px solid rgba(255,255,255,0.05); border-radius: 0; padding-top: 2rem;">
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">
-                        Developed by <a href="https://portfolio-sudharsan-karthikeyan.vercel.app/" target="_blank" style="color: var(--accent-purple); text-decoration: none; font-weight: 800;">Sudharsan</a>
-                    </p>
-                </div>
-            `;
         }
     </script>
 </body>
